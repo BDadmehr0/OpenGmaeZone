@@ -104,22 +104,31 @@ class main_p(ctk.CTkFrame):
         # OBJ
 
         # Menu Top Frame
-        menu_top_frame = ctk.CTkFrame(self)
-        menu_top_frame.pack(side='top', fill='x', expand=False)
+        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_top_frame.pack(side='top', fill='x', expand=False)
 
         # Menu Top Frame OBJs
 
-        main_p_btn = ctk.CTkButton(menu_top_frame, text='main')
-        main_p_btn.pack(side='left', fill='x', expand=False)
+        # APP Logo
+        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
+        self.logo.pack(side='left', fill='x', expand=False, padx=5)
 
-        library_p_btn = ctk.CTkButton(menu_top_frame, text='library')
-        library_p_btn.pack(side='left', fill='x', expand=False)
+        # Menu Top Buttons
 
-        shop_p_btn = ctk.CTkButton(menu_top_frame, text='shop')
-        shop_p_btn.pack(side='left', fill='x', expand=False)
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Tahoma', 20), corner_radius=0)
+        self.main_p_btn.pack(side='left', fill='y', expand=False)
 
-        profile_p_btn = ctk.CTkButton(menu_top_frame, text='profile')
-        profile_p_btn.pack(side='left', fill='x', expand=False)
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Tahoma', 20), corner_radius=0)
+        self.library_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Tahoma', 20), corner_radius=0)
+        self.shop_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Tahoma', 20), corner_radius=0)
+        self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
     # Func Full Screen
     def toggle_geom(self, event):
