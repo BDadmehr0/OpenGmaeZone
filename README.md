@@ -6,8 +6,6 @@
 
 ## Project Description
 
-**Briefly describe your project here. What is it, what problem does it solve, and why is it important or interesting?**
-
 This project is a Python application built using customtkinter and tkinter libraries, creating a graphical user interface for Linux. The main goal of this application is to establish a game shop, providing users with the ability to download, install, and play games.
 
 **Key Highlights of the Project**
