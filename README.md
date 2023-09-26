@@ -4,8 +4,6 @@
 
 ## About
 
-## Project Description
-
 This project is a Python application built using customtkinter and tkinter libraries, creating a graphical user interface for Linux. The main goal of this application is to establish a game shop, providing users with the ability to download, install, and play games.
 
 **Key Highlights of the Project**
