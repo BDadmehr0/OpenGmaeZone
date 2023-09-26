@@ -31,8 +31,6 @@ In summary, this project creates a community around it and holds significant val
 
 ## Installation
 
-Provide instructions on how to install or set up your project. You can include prerequisites, dependencies, and step-by-step installation guides.
-
 ```
 # Example installation instructions
 1. Clone this repository.
@@ -41,8 +39,6 @@ Provide instructions on how to install or set up your project. You can include p
 ```
 
 ## Contributing
-
-If you would like to contribute to the project, please follow these guidelines:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
