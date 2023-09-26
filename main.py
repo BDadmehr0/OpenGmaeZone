@@ -94,16 +94,34 @@ class main_p(ctk.CTkFrame):
         self.controller = controller
         self.new_frame_status = False
 
-        # Full Screen Code
+        # Full Screen
         pad=3
         self._geom='500x600+0+0'
         controller.geometry("{0}x{1}+0+0".format(
             controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
         controller.bind('<F11>', self.toggle_geom)
 
+        # OBJ
+
+        # Menu Top Frame
         menu_top_frame = ctk.CTkFrame(self)
         menu_top_frame.pack(side='top', fill='x', expand=False)
 
+        # Menu Top Frame OBJs
+
+        main_p_btn = ctk.CTkButton(menu_top_frame, text='main')
+        main_p_btn.pack(side='left', fill='x', expand=False)
+
+        library_p_btn = ctk.CTkButton(menu_top_frame, text='library')
+        library_p_btn.pack(side='left', fill='x', expand=False)
+
+        shop_p_btn = ctk.CTkButton(menu_top_frame, text='shop')
+        shop_p_btn.pack(side='left', fill='x', expand=False)
+
+        profile_p_btn = ctk.CTkButton(menu_top_frame, text='profile')
+        profile_p_btn.pack(side='left', fill='x', expand=False)
+
+    # Func Full Screen
     def toggle_geom(self, event):
         if self.new_frame_status:
             self.controller.geometry(self._geom)
