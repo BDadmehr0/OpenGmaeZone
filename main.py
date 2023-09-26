@@ -4,21 +4,59 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 # Pages
-class main(ctk.CTkFrame):
-+ 
-+     def __init__(self, parent, controller):
-+         ctk.CTkFrame.__init__(self, parent)
-+         self.controller = controller
-+         self.new_frame_status = False
-+ 
-+ 
-+ 
-+         # Full Screen Code
-+         pad=3
-+         self._geom='500x600+0+0'
-         controller.geometry("{0}x{1}+0+0".format(
+
+## profile
+class profile(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+
+
+        # Full Screen Code
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
             controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>',self.togg)
+        controller.bind('<F11>',self.toggle_geom)
+
+## library
+class library(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+
+
+        # Full Screen Code
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>',self.toggle_geom)
+
+## shop
+class shop(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+
+
+        # Full Screen Code
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>',self.toggle_geom)
+
+## main
 class main(ctk.CTkFrame):
 
     def __init__(self, parent, controller):
@@ -35,6 +73,7 @@ class main(ctk.CTkFrame):
             controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
         controller.bind('<F11>',self.toggle_geom)
 
+## WelcomePage
 class WelcomePage(ctk.CTk):
     def __init__(self):
         super().__init__()
