@@ -4,7 +4,24 @@
 
 ## About
 
-Briefly describe your project here. What is it, what problem does it solve, and why is it important or interesting? You can provide a high-level overview of your project in this section.
+## Project Description
+
+**Briefly describe your project here. What is it, what problem does it solve, and why is it important or interesting?**
+
+This project is a Python application built using customtkinter and tkinter libraries, creating a graphical user interface for Linux. The main goal of this application is to establish a game shop, providing users with the ability to download, install, and play games.
+
+**Key Highlights of the Project**
+
+1. **Open Source**: The project is open source, allowing users to easily view and modify the code or contribute to its improvement. This carries high importance within the developer community.
+
+2. **Graphical Interface**: Creating a graphical interface for Linux users enhances access to games and improves their ease of use.
+
+3. **Game Centralization**: The application allows users to easily access a game download center, making it convenient to install and run games. This enables users to play games without encountering technical difficulties or additional complexities.
+
+4. **Community Support**: Being open source, the project likely fosters information sharing and collaboration among users and developers for further enhancement and improvement.
+
+In summary, this project creates a community around it and holds significant value for enthusiasts of computer gaming on the Linux operating system.
+
 
 ## Table of Contents
 
