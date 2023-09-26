@@ -6,72 +6,112 @@ from PIL import Image, ImageTk
 # Pages
 
 ## profile
-class profile(ctk.CTkFrame):
+class profile_p(ctk.CTkFrame):
 
     def __init__(self, parent, controller):
         ctk.CTkFrame.__init__(self, parent)
         self.controller = controller
         self.new_frame_status = False
 
-
-
         # Full Screen Code
         pad=3
         self._geom='500x600+0+0'
         controller.geometry("{0}x{1}+0+0".format(
             controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>',self.toggle_geom)
+        controller.bind('<F11>', self.toggle_geom)
+
+        menu_top_frame = ctk.CTkFrame(self)
+        menu_top_frame.pack(side='top', fill='x', expand=False)
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
 
 ## library
-class library(ctk.CTkFrame):
+class library_p(ctk.CTkFrame):
 
     def __init__(self, parent, controller):
         ctk.CTkFrame.__init__(self, parent)
         self.controller = controller
         self.new_frame_status = False
 
-
-
         # Full Screen Code
         pad=3
         self._geom='500x600+0+0'
         controller.geometry("{0}x{1}+0+0".format(
             controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>',self.toggle_geom)
+        controller.bind('<F11>', self.toggle_geom)
+
+        menu_top_frame = ctk.CTkFrame(self)
+        menu_top_frame.pack(side='top', fill='x', expand=False)
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
 
 ## shop
-class shop(ctk.CTkFrame):
+class shop_p(ctk.CTkFrame):
 
     def __init__(self, parent, controller):
         ctk.CTkFrame.__init__(self, parent)
         self.controller = controller
         self.new_frame_status = False
 
-
-
         # Full Screen Code
         pad=3
         self._geom='500x600+0+0'
         controller.geometry("{0}x{1}+0+0".format(
             controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>',self.toggle_geom)
+        controller.bind('<F11>', self.toggle_geom)
+
+        menu_top_frame = ctk.CTkFrame(self)
+        menu_top_frame.pack(side='top', fill='x', expand=False)
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
 
 ## main
-class main(ctk.CTkFrame):
+class main_p(ctk.CTkFrame):
 
     def __init__(self, parent, controller):
         ctk.CTkFrame.__init__(self, parent)
         self.controller = controller
         self.new_frame_status = False
 
-
-
         # Full Screen Code
         pad=3
         self._geom='500x600+0+0'
         controller.geometry("{0}x{1}+0+0".format(
             controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>',self.toggle_geom)
+        controller.bind('<F11>', self.toggle_geom)
+
+        menu_top_frame = ctk.CTkFrame(self)
+        menu_top_frame.pack(side='top', fill='x', expand=False)
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
 
 ## WelcomePage
 class WelcomePage(ctk.CTk):
@@ -85,16 +125,14 @@ class WelcomePage(ctk.CTk):
 
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
 
-        new_width = 200
-        new_height = 150
-        self.image = self.image.resize((new_width, new_height), Image.ANTIALIAS)
+        self.image = self.image.resize((128, 128), Image.ANTIALIAS)
 
         self.photo = ImageTk.PhotoImage(self.image)
 
         self.label = ctk.CTkLabel(self, image=self.photo, text='')
         self.label.pack(pady=20)
 
-        self.welcome_label = ctk.CTkLabel(self, text='Welcome to the app!', font=('roboto', 25))
+        self.welcome_label = ctk.CTkLabel(self, text='Welcome\nOpenGameZone', font=('roboto', 25))
         self.welcome_label.pack()
 
         self.after(5000, self.close_welcome)
@@ -127,17 +165,19 @@ class Frame_ch(ctk.CTk):
 
         self.frames = {}
 
-        for F in (main, shop, library, profile):
+        for F in (main_p, shop_p, library_p, profile_p):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame(main)
+        self.show_frame(main_p)
 
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
 
 if __name__ == "__main__":
-    welcome_page = WelcomePage()
-    welcome_page.mainloop()
+    # welcome_page = WelcomePage()
+    # welcome_page.mainloop()
+    app = Frame_ch()
+    app.mainloop()
