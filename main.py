@@ -118,16 +118,16 @@ class main_p(ctk.CTkFrame):
 
         # Menu Top Buttons
 
-        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Tahoma', 20), corner_radius=0)
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 20), corner_radius=0)
         self.main_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Tahoma', 20), corner_radius=0)
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 20), corner_radius=0)
         self.library_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Tahoma', 20), corner_radius=0)
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 20), corner_radius=0)
         self.shop_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Tahoma', 20), corner_radius=0)
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 20), corner_radius=0)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
     # Func Full Screen
