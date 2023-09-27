@@ -1,93 +1,22 @@
 import customtkinter as ctk
 import tkinter as tk
+import os
 
 from PIL import Image, ImageTk
+
+
+# Polet Color
+
+class color:
+    yellow = '#FFBB5C'
+    dark_yellow = '#FF9B50'
+    red = '#E25E3E'
+    dark_red = '#C63D2F'
 
 # Pages
 
 ## profile
-class profile_p(ctk.CTkFrame):
-
-    def __init__(self, parent, controller):
-        ctk.CTkFrame.__init__(self, parent)
-        self.controller = controller
-        self.new_frame_status = False
-
-        # Full Screen Code
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
-
-        menu_top_frame = ctk.CTkFrame(self)
-        menu_top_frame.pack(side='top', fill='x', expand=False)
-
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
-
-## library
-class library_p(ctk.CTkFrame):
-
-    def __init__(self, parent, controller):
-        ctk.CTkFrame.__init__(self, parent)
-        self.controller = controller
-        self.new_frame_status = False
-
-        # Full Screen Code
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
-
-        menu_top_frame = ctk.CTkFrame(self)
-        menu_top_frame.pack(side='top', fill='x', expand=False)
-
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
-
-## shop
-class shop_p(ctk.CTkFrame):
-
-    def __init__(self, parent, controller):
-        ctk.CTkFrame.__init__(self, parent)
-        self.controller = controller
-        self.new_frame_status = False
-
-        # Full Screen Code
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
-
-        menu_top_frame = ctk.CTkFrame(self)
-        menu_top_frame.pack(side='top', fill='x', expand=False)
-
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
-
-## main
-class main_p(ctk.CTkFrame):
+class profile_p_friends(ctk.CTkFrame):
 
     def __init__(self, parent, controller):
         ctk.CTkFrame.__init__(self, parent)
@@ -118,19 +47,470 @@ class main_p(ctk.CTkFrame):
 
         # Menu Top Buttons
 
-        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 20), corner_radius=0)
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.main_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 20), corner_radius=0)
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.library_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 20), corner_radius=0)
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.shop_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 20), corner_radius=0)
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
-    # Func Full Screen
+        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.exit_btn.pack(side='right', fill='y', expand=False)
+
+        # Profile setting menu
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='left', fill='y', expand=False)
+
+        # Profile setting menu OBJs
+        
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+
+        # Profile Menu Detials
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
+
+    def exitf(self):
+        exit()
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
+
+# email
+class profile_p_email(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+        # Full Screen
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>', self.toggle_geom)
+
+        # OBJ
+
+        # Menu Top Frame
+        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_top_frame.pack(side='top', fill='x', expand=False)
+
+        # Menu Top Frame OBJs
+
+        # APP Logo
+        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
+        self.logo.pack(side='left', fill='x', expand=False, padx=5)
+
+        # Menu Top Buttons
+
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.main_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.library_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.shop_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.exit_btn.pack(side='right', fill='y', expand=False)
+
+        # Profile setting menu
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='left', fill='y', expand=False)
+
+        # Profile setting menu OBJs
+        
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+
+        # Profile Menu Detials
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
+
+    def exitf(self):
+        exit()
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
+
+## password
+class profile_p_password(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+        # Full Screen
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>', self.toggle_geom)
+
+        # OBJ
+
+        # Menu Top Frame
+        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_top_frame.pack(side='top', fill='x', expand=False)
+
+        # Menu Top Frame OBJs
+
+        # APP Logo
+        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
+        self.logo.pack(side='left', fill='x', expand=False, padx=5)
+
+        # Menu Top Buttons
+
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.main_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.library_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.shop_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.exit_btn.pack(side='right', fill='y', expand=False)
+
+        # Profile setting menu
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='left', fill='y', expand=False)
+
+        # Profile setting menu OBJs
+        
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+
+        # Profile Menu Detials
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
+    
+    def exitf(self):
+        exit()
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
+
+class profile_p(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+        # Full Screen
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>', self.toggle_geom)
+
+        # OBJ
+
+        # Menu Top Frame
+        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_top_frame.pack(side='top', fill='x', expand=False)
+
+        # Menu Top Frame OBJs
+
+        # APP Logo
+        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
+        self.logo.pack(side='left', fill='x', expand=False, padx=5)
+
+        # Menu Top Buttons
+
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.main_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.library_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.shop_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.exit_btn.pack(side='right', fill='y', expand=False)
+
+        # Profile setting menu
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='left', fill='y', expand=False)
+
+        # Profile setting menu OBJs
+        
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p_password), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_email), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_friends), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting.pack(fill='x')
+
+
+        # Profile Menu Detials
+        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_left_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
+        
+
+    def exitf(self):
+        exit()
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
+
+## library
+class library_p(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+        # Full Screen
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>', self.toggle_geom)
+
+        # OBJ
+
+        # Menu Top Frame
+        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_top_frame.pack(side='top', fill='x', expand=False)
+
+        # Menu Top Frame OBJs
+
+        # APP Logo
+        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
+        self.logo.pack(side='left', fill='x', expand=False, padx=5)
+
+        # Menu Top Buttons
+
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.main_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.library_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.shop_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.exit_btn.pack(side='right', fill='y', expand=False)
+
+    def exitf(self):
+        exit()
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
+
+## shop
+class shop_p(ctk.CTkFrame):
+
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+        # Full Screen
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>', self.toggle_geom)
+
+        # OBJ
+
+        # Menu Top Frame
+        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_top_frame.pack(side='top', fill='x', expand=False)
+
+        # Menu Top Frame OBJs
+
+        # APP Logo
+        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
+        self.logo.pack(side='left', fill='x', expand=False, padx=5)
+
+        # Menu Top Buttons
+
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.main_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.library_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.shop_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.exit_btn.pack(side='right', fill='y', expand=False)
+
+    def exitf(self):
+        exit()
+
+    def toggle_geom(self, event):
+        if self.new_frame_status:
+            self.controller.geometry(self._geom)
+        else:
+            self._geom = self.controller.geometry()
+            self.controller.geometry("{0}x{1}+0+0".format(
+                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
+        self.new_frame_status = not self.new_frame_status
+
+## main
+class main_p(ctk.CTkFrame):
+    def __init__(self, parent, controller):
+        print('[*] page main load')
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+        self.new_frame_status = False
+
+        # Full Screen
+        pad=3
+        self._geom='500x600+0+0'
+        controller.geometry("{0}x{1}+0+0".format(
+            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
+        controller.bind('<F11>', self.toggle_geom)
+
+        # OBJ
+
+        # Menu Top Frame
+        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_top_frame.pack(side='top', fill='x', expand=False)
+
+        # Menu Top Frame OBJs
+
+        # APP Logo
+        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
+        self.logo.pack(side='left', fill='x', expand=False, padx=5)
+
+        # Menu Top Buttons
+
+        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.main_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.library_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.shop_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.exit_btn.pack(side='right', fill='y', expand=False)
+
+    def exitf(self):
+        exit()
+
     def toggle_geom(self, event):
         if self.new_frame_status:
             self.controller.geometry(self._geom)
@@ -192,7 +572,10 @@ class Frame_ch(ctk.CTk):
 
         self.frames = {}
 
-        for F in (main_p, shop_p, library_p, profile_p):
+        for F in (main_p, shop_p, library_p, profile_p,
+                                             profile_p_friends,
+                                             profile_p_email,
+                                             profile_p_password):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -207,4 +590,5 @@ if __name__ == "__main__":
     # welcome_page = WelcomePage()
     # welcome_page.mainloop()
     app = Frame_ch()
+    os.system('clear')
     app.mainloop()
