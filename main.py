@@ -1,9 +1,8 @@
 import customtkinter as ctk
 import tkinter as tk
 import os
-
+import random
 from PIL import Image, ImageTk
-
 
 # Polet Color
 
@@ -329,6 +328,9 @@ class profile_p(ctk.CTkFrame):
         # Profile Menu Detials
         self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
         self.menu_left_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
+
+        # Profile Menu Detials OBJs
+        
         
 
     def exitf(self):
