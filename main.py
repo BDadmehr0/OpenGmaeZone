@@ -2,6 +2,8 @@ import customtkinter as ctk
 import tkinter as tk
 import os
 import random
+import logging
+
 from PIL import Image, ImageTk
 
 # Polet Color
@@ -466,7 +468,6 @@ class shop_p(ctk.CTkFrame):
 ## main
 class main_p(ctk.CTkFrame):
     def __init__(self, parent, controller):
-        print('[*] page main load')
         ctk.CTkFrame.__init__(self, parent)
         self.controller = controller
         self.new_frame_status = False
@@ -589,6 +590,17 @@ class Frame_ch(ctk.CTk):
         frame.tkraise()
 
 if __name__ == "__main__":
+    # # LOG
+    # logging.basicConfig(filename='log.log', filemode='w', level=logging.INFO)
+
+    # logger = logging.getLogger()
+    # # logger.info('This is error')
+    # logger.debug('This is Debug')
+    # # logger.warning('This is error')
+    # logger.error('This is Error')
+    # logger.critical('This is Critical')
+
+
     # welcome_page = WelcomePage()
     # welcome_page.mainloop()
     app = Frame_ch()
