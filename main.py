@@ -67,24 +67,20 @@ class profile_p_friends(ctk.CTkFrame):
         self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
         self.menu_left_frame.pack(padx=12, pady=10, side='left', fill='y', expand=False)
 
-        # Profile setting menu OBJs
-        
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        # Profile setting menu OBJs       
+        self.button_setting_profile = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_profile.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_passowrd = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p_password), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_passowrd.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_email = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_email), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_email.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_firends = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_friends), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_firends.pack(fill='x')
 
 
-        # Profile Menu Detials
-        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
-        self.menu_left_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
 
     def exitf(self):
         exit()
@@ -151,17 +147,17 @@ class profile_p_email(ctk.CTkFrame):
 
         # Profile setting menu OBJs
         
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_profile = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_profile.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_passowrd = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p_password), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_passowrd.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_email = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_email), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_email.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_firends = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_friends), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_firends.pack(fill='x')
 
 
         # Profile Menu Detials
@@ -233,17 +229,17 @@ class profile_p_password(ctk.CTkFrame):
 
         # Profile setting menu OBJs
         
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_profile = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_profile.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_passowrd = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p_password), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_passowrd.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_email = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_email), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_email.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_firends = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_friends), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_firends.pack(fill='x')
 
 
         # Profile Menu Detials
@@ -314,25 +310,45 @@ class profile_p(ctk.CTkFrame):
 
         # Profile setting menu OBJs
         
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_profile = ctk.CTkButton(self.menu_left_frame, text='Profile', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_profile.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p_password), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_passowrd = ctk.CTkButton(self.menu_left_frame, text='Password', font=('Times New Roman',20), command=lambda: controller.show_frame(profile_p_password), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_passowrd.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_email), fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_email = ctk.CTkButton(self.menu_left_frame, text='Email', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_email), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_email.pack(fill='x')
 
-        self.button_setting = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_friends), fg_color=color.red, hover_color=color.dark_red)
-        self.button_setting.pack(fill='x')
+        self.button_setting_firends = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_friends), fg_color=color.red, hover_color=color.dark_red)
+        self.button_setting_firends.pack(fill='x')
 
 
         # Profile Menu Detials
-        self.menu_left_frame = ctk.CTkFrame(self, corner_radius=0)
-        self.menu_left_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
+
+        self.menu_detials_frame = ctk.CTkFrame(self, corner_radius=0)
+        self.menu_detials_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
 
         # Profile Menu Detials OBJs
-        
+        self.menu_detials_frame = ctk.CTkFrame(self.menu_detials_frame, corner_radius=0)
+        self.menu_detials_frame.pack(pady=30, padx=20, side='left', fill='both', expand=False)
+
+        # Profile image
+        self.image = Image.open("./assets/profile/user.png")
+        self.image = self.image.resize((256, 256 ), Image.ANTIALIAS)
+        self.photo = ImageTk.PhotoImage(self.image)
+
+        self.label = ctk.CTkLabel(self.menu_detials_frame, image=self.photo, text='')
+        self.label.pack()
+
+        # Profile Detail lb
+        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='\nUsername', font=('Times New Roman', 35))
+        self.username_lb.pack(side='left', fill='both', expand=False)
+
+        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Mail\n', font=('Times New Roman', 35))
+        self.username_lb.pack(side='left', fill='both', expand=False)
+
+        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Regoin', font=('Times New Roman', 35))
+        self.username_lb.pack(side='left', fill='both', expand=False)
         
 
     def exitf(self):
@@ -536,7 +552,6 @@ class WelcomePage(ctk.CTk):
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
 
         self.image = self.image.resize((128, 128), Image.ANTIALIAS)
-
         self.photo = ImageTk.PhotoImage(self.image)
 
         self.label = ctk.CTkLabel(self, image=self.photo, text='')
