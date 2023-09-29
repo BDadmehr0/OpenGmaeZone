@@ -340,11 +340,20 @@ class profile_p(ctk.CTkFrame):
         self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Username', font=('Times New Roman', 35))
         self.username_lb.place(x=450, y=130)
 
-        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Mail', font=('Times New Roman', 35))
-        self.username_lb.place(x=450, y=220)
+        self.username_lb_d = ctk.CTkLabel(self.menu_detials_frame, text='Unknown', font=('Roboto', 17))
+        self.username_lb_d.place(x=480, y=180)
 
-        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Regoin', font=('Times New Roman', 35))
-        self.username_lb.place(x=450, y=310)
+        self.mail_lb = ctk.CTkLabel(self.menu_detials_frame, text='Mail', font=('Times New Roman', 35))
+        self.mail_lb.place(x=450, y=220)
+
+        self.mail_lb_d = ctk.CTkLabel(self.menu_detials_frame, text='Unknown', font=('Roboto', 17))
+        self.mail_lb_d.place(x=480, y=270)
+
+        self.regoin_lb = ctk.CTkLabel(self.menu_detials_frame, text='Regoin', font=('Times New Roman', 35))
+        self.regoin_lb.place(x=450, y=310)
+
+        self.regoin_lb_d = ctk.CTkLabel(self.menu_detials_frame, text='Unknown', font=('Roboto', 17))
+        self.regoin_lb_d.place(x=480, y=360)
         
 
     def exitf(self):
