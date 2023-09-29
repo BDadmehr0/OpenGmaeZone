@@ -328,27 +328,23 @@ class profile_p(ctk.CTkFrame):
         self.menu_detials_frame = ctk.CTkFrame(self, corner_radius=0)
         self.menu_detials_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
 
-        # Profile Menu Detials OBJs
-        self.menu_detials_frame = ctk.CTkFrame(self.menu_detials_frame, corner_radius=0)
-        self.menu_detials_frame.pack(pady=30, padx=20, side='left', fill='both', expand=False)
-
         # Profile image
         self.image = Image.open("./assets/profile/user.png")
-        self.image = self.image.resize((256, 256 ), Image.ANTIALIAS)
+        self.image = self.image.resize((256, 256), Image.ANTIALIAS)
         self.photo = ImageTk.PhotoImage(self.image)
 
         self.label = ctk.CTkLabel(self.menu_detials_frame, image=self.photo, text='')
-        self.label.pack()
+        self.label.place(x=130, y=130)
 
         # Profile Detail lb
-        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='\nUsername', font=('Times New Roman', 35))
-        self.username_lb.pack(side='left', fill='both', expand=False)
+        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Username', font=('Times New Roman', 35))
+        self.username_lb.place(x=450, y=130)
 
-        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Mail\n', font=('Times New Roman', 35))
-        self.username_lb.pack(side='left', fill='both', expand=False)
+        self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Mail', font=('Times New Roman', 35))
+        self.username_lb.place(x=450, y=220)
 
         self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Regoin', font=('Times New Roman', 35))
-        self.username_lb.pack(side='left', fill='both', expand=False)
+        self.username_lb.place(x=450, y=310)
         
 
     def exitf(self):
