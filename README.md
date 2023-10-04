@@ -1,8 +1,8 @@
 # OpenGameZone
 
-<img style="float: right;" src="./assets/logo/favicon/opengmaezone-website-favicon-color.png">
 
 This project is a Python application built using customtkinter and tkinter libraries, creating a graphical user interface for Linux. The main goal of this application is to establish a game shop, providing users with the ability to download, install, and play games.
+<img style="float: right;" src="./assets/logo/favicon/opengmaezone-website-favicon-color.png">
 
 **Key Highlights of the Project**
 
