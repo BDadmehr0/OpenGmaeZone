@@ -576,15 +576,17 @@ class WelcomePage(ctk.CTk):
         app = Frame_ch()
         app.mainloop()
 
-class LoginPage(ctk.CTk):
+class Login_Singin(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title('Login Page')
-        self.geometry('700x700')
+        self.geometry('650x600')
         self.resizable(width=False, height=False)
 
         p1 = tk.PhotoImage(file="./assets/logo/favicon/opengmaezone-website-favicon-color.png")
         self.iconphoto(False, p1)
+
+
 
 # Frame Changer
 class Frame_ch(ctk.CTk):
@@ -637,6 +639,6 @@ if __name__ == "__main__":
     LoginPage = LoginPage()
     LoginPage.mainloop()
     
-    app = Frame_ch()
-    os.system('clear')
-    app.mainloop()
+    # app = Frame_ch()
+    # os.system('clear')
+    # app.mainloop()
