@@ -576,15 +576,53 @@ class WelcomePage(ctk.CTk):
         app = Frame_ch()
         app.mainloop()
 
+
+# Login & Singin Class
+class LogSigTabs(ctk.CTkTabview):
+    def __init__(self, master, **kwargs):
+        super().__init__(master, **kwargs)
+
+        # create tabs
+        self.add("Log in")
+        self.add("Sing in")
+
+        # add widgets on tabs singin
+        self.username = ctk.CTkEntry(master=self.tab("Sing in"), font=('roboto', 20), placeholder_text='Username')
+        self.username.pack(padx=20, pady=10)
+
+        self.password = ctk.CTkEntry(master=self.tab("Sing in"), font=('roboto', 20), placeholder_text='Password', show='*')
+        self.password.pack(padx=20, pady=10)
+
+        self.mail = ctk.CTkEntry(master=self.tab("Sing in"), font=('roboto', 20), placeholder_text='Email')
+        self.mail.pack(padx=20, pady=10)
+
+        self.btn = ctk.CTkButton(master=self.tab("Sing in"), font=('roboto', 20), text='Singin', fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.btn.pack(padx=20, pady=20)
+
+        # add widgets on tabs login
+        self.username = ctk.CTkEntry(master=self.tab("Log in"), font=('roboto', 20), placeholder_text='Username')
+        self.username.pack(padx=20, pady=10)
+
+        self.password = ctk.CTkEntry(master=self.tab("Log in"), font=('roboto', 20), placeholder_text='Password', show='*')
+        self.password.pack(padx=20, pady=10)
+
+        self.btn = ctk.CTkButton(master=self.tab("Log in"), font=('roboto', 20), text='Login', fg_color=color.yellow, hover_color=color.dark_yellow)
+        self.btn.pack(padx=20, pady=20)
+
+        
 class Login_Singin(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title('Login Page')
-        self.geometry('650x600')
+        self.title('Login & Singin Page')
         self.resizable(width=False, height=False)
 
         p1 = tk.PhotoImage(file="./assets/logo/favicon/opengmaezone-website-favicon-color.png")
         self.iconphoto(False, p1)
+
+        self.tab_view = LogSigTabs(master=self)
+        self.tab_view.pack(padx=20, pady=20)
+
+        
 
 
 
@@ -636,8 +674,8 @@ if __name__ == "__main__":
 
     # welcome_page = WelcomePage()
     # welcome_page.mainloop()
-    LoginPage = LoginPage()
-    LoginPage.mainloop()
+    Login_Singin = Login_Singin()
+    Login_Singin.mainloop()
     
     # app = Frame_ch()
     # os.system('clear')
