@@ -41,7 +41,7 @@ class profile_p_friends(ctk.CTkFrame):
 
         # APP Logo
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.image = self.image.resize((64, 64))
         self.photo = ImageTk.PhotoImage(self.image)
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
@@ -119,7 +119,7 @@ class profile_p_email(ctk.CTkFrame):
 
         # APP Logo
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.image = self.image.resize((64, 64))
         self.photo = ImageTk.PhotoImage(self.image)
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
@@ -201,7 +201,7 @@ class profile_p_password(ctk.CTkFrame):
 
         # APP Logo
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.image = self.image.resize((64, 64))
         self.photo = ImageTk.PhotoImage(self.image)
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
@@ -282,7 +282,7 @@ class profile_p(ctk.CTkFrame):
 
         # APP Logo
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.image = self.image.resize((64, 64))
         self.photo = ImageTk.PhotoImage(self.image)
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
@@ -330,7 +330,7 @@ class profile_p(ctk.CTkFrame):
 
         # Profile image
         self.image = Image.open("./assets/profile/user.png")
-        self.image = self.image.resize((256, 256), Image.ANTIALIAS)
+        self.image = self.image.resize((256, 256))
         self.photo = ImageTk.PhotoImage(self.image)
 
         self.label = ctk.CTkLabel(self.menu_detials_frame, image=self.photo, text='')
@@ -393,7 +393,7 @@ class library_p(ctk.CTkFrame):
 
         # APP Logo
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.image = self.image.resize((64, 64))
         self.photo = ImageTk.PhotoImage(self.image)
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
@@ -452,7 +452,7 @@ class shop_p(ctk.CTkFrame):
 
         # APP Logo
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.image = self.image.resize((64, 64))
         self.photo = ImageTk.PhotoImage(self.image)
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
@@ -510,7 +510,7 @@ class main_p(ctk.CTkFrame):
 
         # APP Logo
         self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64), Image.ANTIALIAS)
+        self.image = self.image.resize((64, 64))
         self.photo = ImageTk.PhotoImage(self.image)
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
@@ -550,6 +550,7 @@ class WelcomePage(ctk.CTk):
         super().__init__()
         self.title('Welcome')
         self.geometry('400x300')
+        self.resizable(width=False, height=False)
 
         p1 = tk.PhotoImage(file="./assets/logo/favicon/opengmaezone-website-favicon-color.png")
         self.iconphoto(False, p1)
@@ -574,6 +575,16 @@ class WelcomePage(ctk.CTk):
     def open_main_app(self):
         app = Frame_ch()
         app.mainloop()
+
+class LoginPage(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title('Login Page')
+        self.geometry('700x700')
+        self.resizable(width=False, height=False)
+
+        p1 = tk.PhotoImage(file="./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.iconphoto(False, p1)
 
 # Frame Changer
 class Frame_ch(ctk.CTk):
@@ -623,6 +634,9 @@ if __name__ == "__main__":
 
     # welcome_page = WelcomePage()
     # welcome_page.mainloop()
+    LoginPage = LoginPage()
+    LoginPage.mainloop()
+    
     app = Frame_ch()
     os.system('clear')
     app.mainloop()
