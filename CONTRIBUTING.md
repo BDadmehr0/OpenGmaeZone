@@ -1,6 +1,6 @@
-# Contributing to [Your Project Name]
+# Contributing to OpenGameZone
 
-Welcome to [Your Project Name]! We're thrilled that you're interested in contributing. Before you get started, please take a moment to read through this document to ensure a smooth and enjoyable contribution process.
+Welcome to OpenGameZone ! We're thrilled that you're interested in contributing. Before you get started, please take a moment to read through this document to ensure a smooth and enjoyable contribution process.
 
 ## Table of Contents
 
