@@ -19,9 +19,9 @@ We expect all contributors to adhere to our [Code of Conduct](CODE_OF_CONDUCT.md
 
 ## How to Contribute
 
-Contributions to [Your Project Name] can take many forms, including bug fixes, feature enhancements, documentation updates, and more. To get started, follow these steps:
+Contributions to OpenGameZone  can take many forms, including bug fixes, feature enhancements, documentation updates, and more. To get started, follow these steps:
 
-1. Fork the [repository](https://github.com/your-username/your-project).
+1. Fork the [repository](https://github.com/BDadmehr0/OpenGameZone/).
 2. Clone your forked repository to your local machine.
 3. Create a new branch for your contribution: `git checkout -b feature/your-feature` or `bugfix/your-bugfix`.
 4. Make your changes and ensure they follow our [code style guidelines](#code-style-guidelines).
@@ -34,7 +34,7 @@ Our maintainers will review your PR, provide feedback, and work with you to addr
 
 ## Reporting Bugs
 
-If you encounter a bug in [Your Project Name], please open an issue on the [issue tracker](https://github.com/your-username/your-project/issues) and include as much information as possible:
+If you encounter a bug in OpenGameZone, please open an issue on the [issue tracker](https://github.com/BDadmehr0/OpenGameZone/issues) and include as much information as possible:
 
 - A clear and descriptive title.
 - Steps to reproduce the bug.
@@ -43,14 +43,14 @@ If you encounter a bug in [Your Project Name], please open an issue on the [issu
 
 ## Requesting Features
 
-If you have an idea for a new feature or improvement, please open an issue on the [issue tracker](https://github.com/your-username/your-project/issues) with the following details:
+If you have an idea for a new feature or improvement, please open an issue on the [issue tracker](https://github.com/BDadmehr0/OpenGameZone/issues) with the following details:
 
 - A clear and descriptive title.
 - A detailed description of the proposed feature or enhancement.
 
 ## Development Setup
 
-To set up a development environment for [Your Project Name], follow the instructions in our [Development Setup Guide](DEVELOPMENT_SETUP.md).
+To set up a development environment for OpenGameZone, follow the instructions in our [Development Setup Guide](DEVELOPMENT_SETUP.md).
 
 ## Pull Request Process
 
@@ -63,10 +63,10 @@ To set up a development environment for [Your Project Name], follow the instruct
 
 ## Code Style Guidelines
 
-Please follow our [code style guidelines](CODE_STYLE.md) when writing or modifying code for [Your Project Name].
+Please follow our [code style guidelines](CODE_STYLE.md) when writing or modifying code for OpenGameZone.
 
 ## License
 
-By contributing to [Your Project Name], you agree that your contributions will be licensed under the [project's license](LICENSE.md).
+By contributing to OpenGameZone, you agree that your contributions will be licensed under the [project's license](LICENSE.md).
 
-Thank you for contributing to [Your Project Name]!
+Thank you for contributing to OpenGameZone!
